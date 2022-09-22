@@ -37,17 +37,33 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('My Counter App'),
       ),
-      body: const Center(
+      body: Center(
         child: Text(
-          '0',
-          style: TextStyle(
+          context.watch<CounterProvider>().counter.toString(),
+          style: const TextStyle(
             fontSize: 50,
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.add),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            onPressed: () {
+              context.read<CounterProvider>().increment();
+            },
+            child: const Icon(Icons.add),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          FloatingActionButton(
+            onPressed: () {
+              context.read<CounterProvider>().decrement();
+            },
+            child: const Icon(Icons.remove),
+          ),
+        ],
       ),
     );
   }
