@@ -16,8 +16,10 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => CounterProvider(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
+          useMaterial3: true,
           primarySwatch: Colors.blue,
         ),
         home: const MyHomePage(),
@@ -35,7 +37,18 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('My Counter App'),
       ),
-      body: const Center(),
+      body: const Center(
+        child: Text(
+          '0',
+          style: TextStyle(
+            fontSize: 50,
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }
